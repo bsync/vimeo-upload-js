@@ -236,20 +236,9 @@
                 onProgress: function(data) {
                     updateProgress(data.loaded / data.total)
                 },
-                onComplete: function(videoId, index) {
+                onComplete: function(videoId) {
                     var url = 'https://vimeo.com/' + videoId
-
-                    if (index > -1) {
-                        /* The metadata contains all of the uploaded video(s) details see: https://developer.vimeo.com/api/endpoints/videos#/{video_id} */
-                        url = this.metadata[index].link //
-
-                        /* add stringify the json object for displaying in a text area */
-                        var pretty = JSON.stringify(this.metadata[index], null, 2)
-
-                        console.log(pretty) /* echo server data */
-                    }
-
-                    showMessage('<strong>Upload Successful</strong>: check uploaded video @ <a href="' + url + '">' + url + '</a>. Open the Console for the response details.')
+                    showMessage('<strong>Upload Successful</strong>: check uploaded video @ <a href="' + url + '">' + url + '</a>.')
                 }
             })).upload()
 
